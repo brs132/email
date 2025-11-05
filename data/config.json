@@ -1,0 +1,29 @@
+{
+  "perfectpayToken": "",
+  "smtpConfig": {
+    "host": "",
+    "port": 587,
+    "email": "",
+    "password": ""
+  },
+  "sequences": [
+    {
+      "id": "1",
+      "subject": "Bem-vindo! Seu acesso já está pronto",
+      "content": "Obrigado pela sua compra! Seu acesso foi ativado. Clique no link abaixo para começar:\n\n[LINK_DE_ACESSO]\n\nQualquer dúvida, estamos aqui para ajudar!",
+      "delay": 0
+    },
+    {
+      "id": "2",
+      "subject": "Como funciona e próximos passos",
+      "content": "Agora que você tem acesso, deixa eu mostrar como tudo funciona:\n\n1. Faça login na plataforma\n2. Confira os primeiros passos\n3. Comece a usar\n\nAssista nosso tutorial de 5 minutos.",
+      "delay": 1
+    },
+    {
+      "id": "3",
+      "subject": "Dúvidas? Temos a resposta - e também sobre reembolso",
+      "content": "Se você tiver qualquer dúvida ou não estiver satisfeito, podemos ajudar.\n\nNossa política de reembolso oferece 7 dias de garantia completa.\n\nEntre em contato conosco em support@email.com",
+      "delay": 3
+    }
+  ]
+}
