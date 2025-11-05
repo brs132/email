@@ -13,7 +13,6 @@ import {
   Code,
   Key,
 } from "lucide-react";
-import { useState as useStateAlert } from "react";
 
 export default function Webhook() {
   const [copied, setCopied] = useState(false);
