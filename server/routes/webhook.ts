@@ -33,7 +33,9 @@ export const handlePerfectPayWebhook: RequestHandler = async (req, res) => {
     if (payload.event === "purchase" && payload.customer && payload.product) {
       const { customer, product, access_link } = payload;
 
-      console.log(`Processing purchase from ${customer.email} for ${product.name}`);
+      console.log(
+        `Processing purchase from ${customer.email} for ${product.name}`,
+      );
 
       // Get all sequences
       const sequences = getSequences();
@@ -46,7 +48,7 @@ export const handlePerfectPayWebhook: RequestHandler = async (req, res) => {
         setTimeout(async () => {
           const emailContent = sequence.content.replace(
             "[LINK_DE_ACESSO]",
-            access_link || "https://example.com/access"
+            access_link || "https://example.com/access",
           );
 
           const success = await sendEmail({
@@ -56,12 +58,10 @@ export const handlePerfectPayWebhook: RequestHandler = async (req, res) => {
           });
 
           if (success) {
-            console.log(
-              `Email sent to ${customer.email}: ${sequence.subject}`
-            );
+            console.log(`Email sent to ${customer.email}: ${sequence.subject}`);
           } else {
             console.error(
-              `Failed to send email to ${customer.email}: ${sequence.subject}`
+              `Failed to send email to ${customer.email}: ${sequence.subject}`,
             );
           }
         }, delayMs);

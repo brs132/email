@@ -8,10 +8,7 @@ import {
   updateSequenceHandler,
   deleteSequenceHandler,
 } from "./routes/sequences";
-import {
-  handlePerfectPayWebhook,
-  getWebhookStatus,
-} from "./routes/webhook";
+import { handlePerfectPayWebhook, getWebhookStatus } from "./routes/webhook";
 import {
   getConfigHandler,
   updateSMTPConfigHandler,

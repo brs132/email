@@ -17,9 +17,7 @@ import {
 export default function Webhook() {
   const [copied, setCopied] = useState(false);
   const [perfectpayToken, setPerfectpayToken] = useState("");
-  const [webhookUrl] = useState(
-    "https://emailflow.com/webhook/perfectpay"
-  );
+  const [webhookUrl] = useState("https://emailflow.com/webhook/perfectpay");
   const [smtpConfig, setSmtpConfig] = useState({
     host: "",
     port: "587",
@@ -136,7 +134,8 @@ export default function Webhook() {
                 className="font-mono"
               />
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-                Seu token é mantido seguro. Você pode revogá-lo a qualquer momento na PerfectPay
+                Seu token é mantido seguro. Você pode revogá-lo a qualquer
+                momento na PerfectPay
               </p>
             </div>
 
@@ -152,7 +151,9 @@ export default function Webhook() {
                         app.perfectpay.com.br
                       </code>
                     </li>
-                    <li>Vá para Dashboard &gt; Configurações &gt; Integrações</li>
+                    <li>
+                      Vá para Dashboard &gt; Configurações &gt; Integrações
+                    </li>
                     <li>Procure por "Token de Acesso" ou "API Key"</li>
                     <li>Copie o token completo</li>
                   </ol>
@@ -237,10 +238,7 @@ export default function Webhook() {
               </div>
             </div>
 
-            <Button
-              onClick={handleSaveConfig}
-              className="w-full md:w-auto"
-            >
+            <Button onClick={handleSaveConfig} className="w-full md:w-auto">
               Salvar Configuração SMTP
             </Button>
 
@@ -302,7 +300,7 @@ export default function Webhook() {
                     timestamp: new Date().toISOString(),
                   },
                   null,
-                  2
+                  2,
                 )}
                 readOnly
                 className="font-mono text-xs"
@@ -329,8 +327,8 @@ export default function Webhook() {
                         timestamp: new Date().toISOString(),
                       },
                       null,
-                      2
-                    )
+                      2,
+                    ),
                   )
                 }
               >
@@ -341,7 +339,8 @@ export default function Webhook() {
 
             <div className="mt-6 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded p-4">
               <p className="text-sm text-green-800 dark:text-green-200">
-                ✅ Integração testada com sucesso! Seus emails estão prontos para serem enviados.
+                ✅ Integração testada com sucesso! Seus emails estão prontos
+                para serem enviados.
               </p>
             </div>
           </Card>
@@ -364,7 +363,8 @@ export default function Webhook() {
                   POST /webhook/perfectpay
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-3">
-                  Recebe eventos de compra da PerfectPay e dispara a sequência de emails
+                  Recebe eventos de compra da PerfectPay e dispara a sequência
+                  de emails
                 </p>
                 <div className="space-y-2 text-xs">
                   <div>
@@ -406,7 +406,10 @@ export default function Webhook() {
                   Verifica o status da integração
                 </p>
                 <div className="bg-slate-50 dark:bg-slate-900 p-2 rounded mt-2 font-mono text-xs">
-                  Resposta: {"{ \"status\": \"connected\", \"last_event\": \"2024-01-15T10:30:00Z\" }"}
+                  Resposta:{" "}
+                  {
+                    '{ "status": "connected", "last_event": "2024-01-15T10:30:00Z" }'
+                  }
                 </div>
               </div>
             </div>

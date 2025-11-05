@@ -14,7 +14,7 @@ export function initializeResendService(): Resend | null {
 
   if (!key) {
     console.warn(
-      "No Resend API keys configured. Email service will not work until keys are added."
+      "No Resend API keys configured. Email service will not work until keys are added.",
     );
     return null;
   }
@@ -29,7 +29,7 @@ export function initializeResendService(): Resend | null {
 }
 
 export async function sendEmailWithResend(
-  payload: EmailPayload
+  payload: EmailPayload,
 ): Promise<boolean> {
   const client = initializeResendService();
 

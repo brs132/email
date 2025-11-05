@@ -23,9 +23,7 @@ export const getConfigHandler: RequestHandler = (req, res) => {
     res.json({ success: true, data: safeConfig });
   } catch (error) {
     console.error("Error fetching config:", error);
-    res
-      .status(500)
-      .json({ success: false, error: "Failed to fetch config" });
+    res.status(500).json({ success: false, error: "Failed to fetch config" });
   }
 };
 

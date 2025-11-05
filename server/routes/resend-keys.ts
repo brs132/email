@@ -1,9 +1,5 @@
 import { RequestHandler } from "express";
-import {
-  getResendKeys,
-  addResendKey,
-  deleteResendKey,
-} from "../utils/storage";
+import { getResendKeys, addResendKey, deleteResendKey } from "../utils/storage";
 
 export const getResendKeysHandler: RequestHandler = (req, res) => {
   try {
@@ -29,22 +25,18 @@ export const addResendKeyHandler: RequestHandler = (req, res) => {
     const { name, key } = req.body;
 
     if (!name || !key) {
-      res
-        .status(400)
-        .json({
-          success: false,
-          error: "Name and key are required",
-        });
+      res.status(400).json({
+        success: false,
+        error: "Name and key are required",
+      });
       return;
     }
 
     if (!key.startsWith("re_")) {
-      res
-        .status(400)
-        .json({
-          success: false,
-          error: "Invalid Resend key format. Must start with 're_'",
-        });
+      res.status(400).json({
+        success: false,
+        error: "Invalid Resend key format. Must start with 're_'",
+      });
       return;
     }
 
@@ -62,9 +54,7 @@ export const addResendKeyHandler: RequestHandler = (req, res) => {
     });
   } catch (error) {
     console.error("Error adding Resend key:", error);
-    res
-      .status(500)
-      .json({ success: false, error: "Failed to add Resend key" });
+    res.status(500).json({ success: false, error: "Failed to add Resend key" });
   }
 };
 
@@ -73,18 +63,14 @@ export const deleteResendKeyHandler: RequestHandler = (req, res) => {
     const { id } = req.params;
 
     if (!id) {
-      res
-        .status(400)
-        .json({ success: false, error: "Key ID is required" });
+      res.status(400).json({ success: false, error: "Key ID is required" });
       return;
     }
 
     const deleted = deleteResendKey(id);
 
     if (!deleted) {
-      res
-        .status(404)
-        .json({ success: false, error: "Key not found" });
+      res.status(404).json({ success: false, error: "Key not found" });
       return;
     }
 

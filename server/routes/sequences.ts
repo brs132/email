@@ -23,12 +23,10 @@ export const createSequenceHandler: RequestHandler = (req, res) => {
     const { subject, content, delay } = req.body;
 
     if (!subject || !content) {
-      res
-        .status(400)
-        .json({
-          success: false,
-          error: "Subject and content are required",
-        });
+      res.status(400).json({
+        success: false,
+        error: "Subject and content are required",
+      });
       return;
     }
 
@@ -59,9 +57,7 @@ export const updateSequenceHandler: RequestHandler = (req, res) => {
     });
 
     if (!updated) {
-      res
-        .status(404)
-        .json({ success: false, error: "Sequence not found" });
+      res.status(404).json({ success: false, error: "Sequence not found" });
       return;
     }
 

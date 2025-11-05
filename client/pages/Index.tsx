@@ -2,7 +2,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Send, Zap, Shield, ArrowRight, Mail, Code, Settings } from "lucide-react";
+import {
+  Check,
+  Send,
+  Zap,
+  Shield,
+  ArrowRight,
+  Mail,
+  Code,
+  Settings,
+} from "lucide-react";
 
 export default function Index() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -59,7 +68,9 @@ export default function Index() {
               Automação de Email Marketing com PerfectPay
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-              Crie sequências de email automáticas, integre com PerfectPay via webhook e envie acesso de forma segura para seus clientes. Tudo em um único lugar.
+              Crie sequências de email automáticas, integre com PerfectPay via
+              webhook e envie acesso de forma segura para seus clientes. Tudo em
+              um único lugar.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/sequences">
@@ -108,7 +119,8 @@ export default function Index() {
             Tudo que você precisa
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Ferramentas poderosas para gerenciar suas campanhas de email marketing e automações
+            Ferramentas poderosas para gerenciar suas campanhas de email
+            marketing e automações
           </p>
         </div>
 
@@ -121,7 +133,8 @@ export default function Index() {
               Sequências de Email
             </h3>
             <p className="text-slate-600 dark:text-slate-400">
-              Crie e gerencie sequências automáticas de email. Ideal para onboarding e educação de clientes.
+              Crie e gerencie sequências automáticas de email. Ideal para
+              onboarding e educação de clientes.
             </p>
           </Card>
 
@@ -133,7 +146,8 @@ export default function Index() {
               Integração Webhook
             </h3>
             <p className="text-slate-600 dark:text-slate-400">
-              Conecte com PerfectPay usando webhooks. Receba notificações de eventos automaticamente.
+              Conecte com PerfectPay usando webhooks. Receba notificações de
+              eventos automaticamente.
             </p>
           </Card>
 
@@ -145,14 +159,18 @@ export default function Index() {
               Acesso Seguro
             </h3>
             <p className="text-slate-600 dark:text-slate-400">
-              Distribua links de acesso com segurança. Rastreie quem abriu seus emails.
+              Distribua links de acesso com segurança. Rastreie quem abriu seus
+              emails.
             </p>
           </Card>
         </div>
       </section>
 
       {/* Email Sequences Preview */}
-      <section id="sequences" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-200 dark:border-slate-800">
+      <section
+        id="sequences"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-200 dark:border-slate-800"
+      >
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
@@ -189,7 +207,8 @@ export default function Index() {
               Sequência de 3 Emails
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
-              Uma sequência completa e provada para enviar acesso aos seus clientes:
+              Uma sequência completa e provada para enviar acesso aos seus
+              clientes:
             </p>
             <div className="space-y-4">
               <div className="flex gap-4">
@@ -197,7 +216,9 @@ export default function Index() {
                   <Check className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white">Email de Boas-vindas</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    Email de Boas-vindas
+                  </h4>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                     Apresente seu produto/serviço e forneça o link de acesso
                   </p>
@@ -208,7 +229,9 @@ export default function Index() {
                   <Check className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white">Guia de Uso</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    Guia de Uso
+                  </h4>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                     Explique como usar a plataforma e os primeiros passos
                   </p>
@@ -219,7 +242,9 @@ export default function Index() {
                   <Check className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white">Suporte & Reembolso</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    Suporte & Reembolso
+                  </h4>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                     Ofereça suporte e informações sobre política de reembolso
                   </p>
@@ -236,14 +261,18 @@ export default function Index() {
       </section>
 
       {/* Webhook Integration Section */}
-      <section id="webhook" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-200 dark:border-slate-800">
+      <section
+        id="webhook"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-200 dark:border-slate-800"
+      >
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
               Integração com PerfectPay
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
-              Integre automaticamente com PerfectPay usando webhooks. Quando um cliente compra, a sequência é disparada automaticamente.
+              Integre automaticamente com PerfectPay usando webhooks. Quando um
+              cliente compra, a sequência é disparada automaticamente.
             </p>
             <div className="space-y-4">
               <div className="flex gap-4">
@@ -251,7 +280,9 @@ export default function Index() {
                   <Zap className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white">Token de Segurança</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    Token de Segurança
+                  </h4>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                     Seu token PerfectPay é armazenado com segurança
                   </p>
@@ -262,7 +293,9 @@ export default function Index() {
                   <Send className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white">Automação Completa</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    Automação Completa
+                  </h4>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                     Eventos são processados e emails disparados automaticamente
                   </p>
@@ -273,7 +306,9 @@ export default function Index() {
                   <Shield className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white">Rastreamento</h4>
+                  <h4 className="font-semibold text-slate-900 dark:text-white">
+                    Rastreamento
+                  </h4>
                   <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
                     Acompanhe o status de cada envio e eventos
                   </p>
@@ -304,11 +339,15 @@ export default function Index() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-primary rounded-full"></span>
-                      <span className="text-sm text-slate-700 dark:text-slate-300">POST</span>
+                      <span className="text-sm text-slate-700 dark:text-slate-300">
+                        POST
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-primary rounded-full"></span>
-                      <span className="text-sm text-slate-700 dark:text-slate-300">GET</span>
+                      <span className="text-sm text-slate-700 dark:text-slate-300">
+                        GET
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -317,7 +356,9 @@ export default function Index() {
                     Segurança
                   </div>
                   <div className="bg-primary/10 rounded p-3">
-                    <span className="text-sm font-medium text-primary">HTTPS + Validação de Token</span>
+                    <span className="text-sm font-medium text-primary">
+                      HTTPS + Validação de Token
+                    </span>
                   </div>
                 </div>
               </div>
@@ -327,13 +368,17 @@ export default function Index() {
       </section>
 
       {/* Email Providers Section */}
-      <section id="integrations" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-200 dark:border-slate-800">
+      <section
+        id="integrations"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-200 dark:border-slate-800"
+      >
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
             Provedores de Email Suportados
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Envie seus emails através de qualquer provedor SMTP. Gmail, Outlook, ou qualquer outro
+            Envie seus emails através de qualquer provedor SMTP. Gmail, Outlook,
+            ou qualquer outro
           </p>
         </div>
 
@@ -343,7 +388,8 @@ export default function Index() {
               Gmail / Google Workspace
             </h3>
             <p className="text-slate-600 dark:text-slate-400 text-sm">
-              Configure suas credenciais SMTP do Gmail ou Google Workspace para enviar diretamente
+              Configure suas credenciais SMTP do Gmail ou Google Workspace para
+              enviar diretamente
             </p>
           </Card>
 
@@ -361,7 +407,8 @@ export default function Index() {
               Serviços SMTP Customizados
             </h3>
             <p className="text-slate-600 dark:text-slate-400 text-sm">
-              Use qualquer provedor SMTP. Fornecedor próprio ou serviço de email transacional
+              Use qualquer provedor SMTP. Fornecedor próprio ou serviço de email
+              transacional
             </p>
           </Card>
         </div>
@@ -374,7 +421,8 @@ export default function Index() {
             Pronto para começar?
           </h2>
           <p className="text-lg text-white/90 mb-8">
-            Configure sua integração com PerfectPay e comece a enviar sequências de email automáticas
+            Configure sua integração com PerfectPay e comece a enviar sequências
+            de email automáticas
           </p>
           <Link to="/sequences">
             <Button variant="secondary" size="lg" className="gap-2">
@@ -393,7 +441,9 @@ export default function Index() {
                 <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
                   <Mail className="w-5 h-5 text-white" />
                 </div>
-                <span className="font-bold text-slate-900 dark:text-white">EmailFlow</span>
+                <span className="font-bold text-slate-900 dark:text-white">
+                  EmailFlow
+                </span>
               </div>
               <p className="text-sm text-slate-600 dark:text-slate-400">
                 Automação de email marketing com PerfectPay
@@ -404,9 +454,21 @@ export default function Index() {
                 Produto
               </h4>
               <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <li><a href="#" className="hover:text-primary">Sequências</a></li>
-                <li><a href="#" className="hover:text-primary">Webhook</a></li>
-                <li><a href="#" className="hover:text-primary">Templates</a></li>
+                <li>
+                  <a href="#" className="hover:text-primary">
+                    Sequências
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary">
+                    Webhook
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary">
+                    Templates
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
@@ -414,9 +476,21 @@ export default function Index() {
                 Recursos
               </h4>
               <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <li><a href="#" className="hover:text-primary">Documentação</a></li>
-                <li><a href="#" className="hover:text-primary">Blog</a></li>
-                <li><a href="#" className="hover:text-primary">Suporte</a></li>
+                <li>
+                  <a href="#" className="hover:text-primary">
+                    Documentação
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary">
+                    Suporte
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
@@ -424,18 +498,36 @@ export default function Index() {
                 Empresa
               </h4>
               <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <li><a href="#" className="hover:text-primary">Sobre</a></li>
-                <li><a href="#" className="hover:text-primary">Privacidade</a></li>
-                <li><a href="#" className="hover:text-primary">Termos</a></li>
+                <li>
+                  <a href="#" className="hover:text-primary">
+                    Sobre
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary">
+                    Privacidade
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary">
+                    Termos
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
           <div className="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-600 dark:text-slate-400">
             <p>&copy; 2024 EmailFlow. Todos os direitos reservados.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-primary">Twitter</a>
-              <a href="#" className="hover:text-primary">LinkedIn</a>
-              <a href="#" className="hover:text-primary">GitHub</a>
+              <a href="#" className="hover:text-primary">
+                Twitter
+              </a>
+              <a href="#" className="hover:text-primary">
+                LinkedIn
+              </a>
+              <a href="#" className="hover:text-primary">
+                GitHub
+              </a>
             </div>
           </div>
         </div>

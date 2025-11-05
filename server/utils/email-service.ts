@@ -12,13 +12,9 @@ let transporter: nodemailer.Transporter | null = null;
 export function initializeEmailService() {
   const smtpConfig = getSMTPConfig();
 
-  if (
-    !smtpConfig.host ||
-    !smtpConfig.email ||
-    !smtpConfig.password
-  ) {
+  if (!smtpConfig.host || !smtpConfig.email || !smtpConfig.password) {
     console.warn(
-      "SMTP configuration is incomplete. Email service will not work until configured."
+      "SMTP configuration is incomplete. Email service will not work until configured.",
     );
     return null;
   }
@@ -53,7 +49,7 @@ export async function sendEmail(payload: EmailPayload): Promise<boolean> {
 
   try {
     const smtpConfig = getSMTPConfig();
-    
+
     const result = await transporter.sendMail({
       from: `"EmailFlow" <${smtpConfig.email}>`,
       to: payload.to,

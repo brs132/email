@@ -4,7 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Plus, Edit2, Trash2, ArrowLeft, Eye, Copy, Loader } from "lucide-react";
+import {
+  Mail,
+  Plus,
+  Edit2,
+  Trash2,
+  ArrowLeft,
+  Eye,
+  Copy,
+  Loader,
+} from "lucide-react";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -72,7 +81,7 @@ export default function Sequences() {
         const result = await response.json();
         if (result.success) {
           setSequences(
-            sequences.map((seq) => (seq.id === editingId ? result.data : seq))
+            sequences.map((seq) => (seq.id === editingId ? result.data : seq)),
           );
           toast.success("Sequência atualizada com sucesso");
         } else {
@@ -237,7 +246,8 @@ export default function Sequences() {
             Sua sequência de emails
           </h2>
           <p className="text-slate-600 dark:text-slate-400">
-            Estes emails serão enviados automaticamente quando um cliente comprar através do webhook da PerfectPay
+            Estes emails serão enviados automaticamente quando um cliente
+            comprar através do webhook da PerfectPay
           </p>
         </div>
 
@@ -330,7 +340,10 @@ export default function Sequences() {
             <li>Acesse suas configurações na PerfectPay</li>
             <li>Vá para "Webhook - Vendas" e clique em "Adicionar"</li>
             <li>Cole a URL acima e salve as configurações</li>
-            <li>Quando um cliente comprar, os emails serão disparados automaticamente</li>
+            <li>
+              Quando um cliente comprar, os emails serão disparados
+              automaticamente
+            </li>
           </ol>
         </div>
       </div>

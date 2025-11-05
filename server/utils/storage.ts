@@ -207,7 +207,10 @@ export function getAdminUser(): AdminUser {
   return config.adminUser;
 }
 
-export function updateAdminPassword(username: string, password: string): boolean {
+export function updateAdminPassword(
+  username: string,
+  password: string,
+): boolean {
   const config = loadConfig();
   if (config.adminUser.username === username) {
     config.adminUser.passwordHash = bcryptjs.hashSync(password, 10);
@@ -217,7 +220,10 @@ export function updateAdminPassword(username: string, password: string): boolean
   return false;
 }
 
-export function verifyAdminPassword(username: string, password: string): boolean {
+export function verifyAdminPassword(
+  username: string,
+  password: string,
+): boolean {
   const config = loadConfig();
   if (config.adminUser.username !== username) {
     return false;
