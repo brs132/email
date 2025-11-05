@@ -39,6 +39,10 @@ interface Config {
   sequences: EmailSequence[];
 }
 
+// Default admin credentials (will be hashed on first run)
+const DEFAULT_ADMIN_USERNAME = "admin";
+const DEFAULT_ADMIN_PASSWORD = "admin123456";
+
 const defaultConfig: Config = {
   perfectpayToken: "",
   smtpConfig: {
@@ -46,6 +50,11 @@ const defaultConfig: Config = {
     port: 587,
     email: "",
     password: "",
+  },
+  resendKeys: [],
+  adminUser: {
+    username: DEFAULT_ADMIN_USERNAME,
+    passwordHash: bcryptjs.hashSync(DEFAULT_ADMIN_PASSWORD, 10),
   },
   sequences: [
     {
