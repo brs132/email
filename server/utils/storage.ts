@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import bcryptjs from "bcryptjs";
 
 const dataDir = path.join(process.cwd(), "data");
 const configFile = path.join(dataDir, "config.json");
@@ -18,9 +19,23 @@ interface SMTPConfig {
   password: string;
 }
 
+interface ResendKey {
+  id: string;
+  key: string;
+  name: string;
+  createdAt: string;
+}
+
+interface AdminUser {
+  username: string;
+  passwordHash: string;
+}
+
 interface Config {
   perfectpayToken: string;
   smtpConfig: SMTPConfig;
+  resendKeys: ResendKey[];
+  adminUser: AdminUser;
   sequences: EmailSequence[];
 }
 
