@@ -166,3 +166,61 @@ export function getPerfectPayToken(): string {
   const config = loadConfig();
   return config.perfectpayToken;
 }
+
+export function getResendKeys(): ResendKey[] {
+  const config = loadConfig();
+  return config.resendKeys;
+}
+
+export function addResendKey(name: string, key: string): ResendKey {
+  const config = loadConfig();
+  const newKey: ResendKey = {
+    id: Date.now().toString(),
+    key,
+    name,
+    createdAt: new Date().toISOString(),
+  };
+  config.resendKeys.push(newKey);
+  saveConfig(config);
+  return newKey;
+}
+
+export function deleteResendKey(id: string): boolean {
+  const config = loadConfig();
+  const initialLength = config.resendKeys.length;
+  config.resendKeys = config.resendKeys.filter((k) => k.id !== id);
+  if (config.resendKeys.length < initialLength) {
+    saveConfig(config);
+    return true;
+  }
+  return false;
+}
+
+export function getRandomResendKey(): ResendKey | null {
+  const keys = getResendKeys();
+  if (keys.length === 0) return null;
+  return keys[Math.floor(Math.random() * keys.length)];
+}
+
+export function getAdminUser(): AdminUser {
+  const config = loadConfig();
+  return config.adminUser;
+}
+
+export function updateAdminPassword(username: string, password: string): boolean {
+  const config = loadConfig();
+  if (config.adminUser.username === username) {
+    config.adminUser.passwordHash = bcryptjs.hashSync(password, 10);
+    saveConfig(config);
+    return true;
+  }
+  return false;
+}
+
+export function verifyAdminPassword(username: string, password: string): boolean {
+  const config = loadConfig();
+  if (config.adminUser.username !== username) {
+    return false;
+  }
+  return bcryptjs.compareSync(password, config.adminUser.passwordHash);
+}
