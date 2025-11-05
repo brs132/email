@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Plus, Edit2, Trash2, ArrowLeft, Eye, Copy } from "lucide-react";
+import { Mail, Plus, Edit2, Trash2, ArrowLeft, Eye, Copy, Loader } from "lucide-react";
+import { toast } from "@/components/ui/sonner";
 import {
   Dialog,
   DialogContent,
@@ -13,75 +14,115 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
-interface Email {
-  id: string;
-  subject: string;
-  content: string;
-  delay: number;
-  recipients: number;
-}
-
-const defaultSequences: Email[] = [
-  {
-    id: "1",
-    subject: "Bem-vindo! Seu acesso já está pronto",
-    content: "Obrigado pela sua compra! Seu acesso foi ativado. Clique no link abaixo para começar:\n\n[LINK_DE_ACESSO]\n\nQualquer dúvida, estamos aqui para ajudar!",
-    delay: 0,
-    recipients: 0,
-  },
-  {
-    id: "2",
-    subject: "Como funciona e próximos passos",
-    content: "Agora que você tem acesso, deixa eu mostrar como tudo funciona:\n\n1. Faça login na plataforma\n2. Confira os primeiros passos\n3. Comece a usar\n\nAssista nosso tutorial de 5 minutos.",
-    delay: 1,
-    recipients: 0,
-  },
-  {
-    id: "3",
-    subject: "Dúvidas? Temos a resposta - e também sobre reembolso",
-    content: "Se você tiver qualquer dúvida ou não estiver satisfeito, podemos ajudar.\n\nNossa política de reembolso oferece 7 dias de garantia completa.\n\nEntre em contato conosco em support@email.com",
-    delay: 3,
-    recipients: 0,
-  },
-];
+import { EmailSequence } from "@shared/api";
 
 export default function Sequences() {
-  const [sequences, setSequences] = useState<Email[]>(defaultSequences);
+  const [sequences, setSequences] = useState<EmailSequence[]>([]);
+  const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [formData, setFormData] = useState<Partial<Email>>({});
+  const [formData, setFormData] = useState<Partial<EmailSequence>>({});
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
-  const handleEdit = (email: Email) => {
+  // Load sequences on mount
+  useEffect(() => {
+    fetchSequences();
+  }, []);
+
+  const fetchSequences = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("/api/sequences");
+      const result = await response.json();
+      if (result.success) {
+        setSequences(result.data || []);
+      } else {
+        toast.error("Erro ao carregar sequências");
+      }
+    } catch (error) {
+      console.error("Error fetching sequences:", error);
+      toast.error("Erro ao carregar sequências");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleEdit = (email: EmailSequence) => {
     setEditingId(email.id);
     setFormData(email);
     setIsDialogOpen(true);
   };
 
-  const handleSave = () => {
-    if (editingId) {
-      setSequences(
-        sequences.map((seq) =>
-          seq.id === editingId ? { ...seq, ...formData } : seq
-        )
-      );
-    } else {
-      const newEmail: Email = {
-        id: Date.now().toString(),
-        subject: formData.subject || "",
-        content: formData.content || "",
-        delay: formData.delay || 0,
-        recipients: 0,
-      };
-      setSequences([...sequences, newEmail]);
+  const handleSave = async () => {
+    try {
+      setIsSaving(true);
+
+      if (!formData.subject || !formData.content) {
+        toast.error("Assunto e conteúdo são obrigatórios");
+        return;
+      }
+
+      if (editingId) {
+        // Update existing
+        const response = await fetch(`/api/sequences/${editingId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        const result = await response.json();
+        if (result.success) {
+          setSequences(
+            sequences.map((seq) => (seq.id === editingId ? result.data : seq))
+          );
+          toast.success("Sequência atualizada com sucesso");
+        } else {
+          toast.error("Erro ao atualizar sequência");
+        }
+      } else {
+        // Create new
+        const response = await fetch("/api/sequences", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        const result = await response.json();
+        if (result.success) {
+          setSequences([...sequences, result.data]);
+          toast.success("Sequência criada com sucesso");
+        } else {
+          toast.error("Erro ao criar sequência");
+        }
+      }
+
+      setEditingId(null);
+      setFormData({});
+      setIsDialogOpen(false);
+    } catch (error) {
+      console.error("Error saving sequence:", error);
+      toast.error("Erro ao salvar sequência");
+    } finally {
+      setIsSaving(false);
     }
-    setEditingId(null);
-    setFormData({});
-    setIsDialogOpen(false);
   };
 
-  const handleDelete = (id: string) => {
-    setSequences(sequences.filter((seq) => seq.id !== id));
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Tem certeza que deseja deletar?")) return;
+
+    try {
+      const response = await fetch(`/api/sequences/${id}`, {
+        method: "DELETE",
+      });
+      const result = await response.json();
+      if (result.success) {
+        setSequences(sequences.filter((seq) => seq.id !== id));
+        toast.success("Sequência deletada com sucesso");
+      } else {
+        toast.error("Erro ao deletar sequência");
+      }
+    } catch (error) {
+      console.error("Error deleting sequence:", error);
+      toast.error("Erro ao deletar sequência");
+    }
   };
 
   const handleAddNew = () => {
